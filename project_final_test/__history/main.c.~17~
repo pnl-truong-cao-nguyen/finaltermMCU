@@ -1,0 +1,24 @@
+#include <main.h>
+
+unsigned int8 seg7ledca[10] = {0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8, 0x80, 0x90};
+unsigned int8 i;
+
+
+void main()
+{
+   DDRB = 0xFF;
+   DDRD = 0x00;
+
+   while(TRUE)
+   {
+      PORTB = 0xFF;
+      
+      for(i = 0; i < 10; i++)
+      {
+         PORTD = seg7ledca[i];
+         delay_ms(1000);
+      }
+
+   }
+
+}

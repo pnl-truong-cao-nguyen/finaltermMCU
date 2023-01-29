@@ -1,0 +1,453 @@
+CCS PCM C Compiler, Version 5.112, 5967               29-Jan-23 19:55
+
+               Filename:   D:\OneDrive - The University of Technology\documents_pnl\DUT\dai_hoc_nam_3\HocKy1\kiThuatViDieuKhien\picc\project_final_test\main.lst
+
+               ROM used:   203 words (2%)
+                           Largest free fragment is 2048
+               RAM used:   24 (7%) at main() level
+                           26 (7%) worst case
+               Stack used: 1 locations (0 in main + 1 for interrupts)
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   07F
+0003:  NOP
+0004:  MOVWF  7F
+0005:  SWAPF  03,W
+0006:  CLRF   03
+0007:  MOVWF  21
+0008:  MOVF   0A,W
+0009:  MOVWF  20
+000A:  CLRF   0A
+000B:  MOVF   04,W
+000C:  MOVWF  22
+000D:  MOVF   77,W
+000E:  MOVWF  23
+000F:  MOVF   78,W
+0010:  MOVWF  24
+0011:  MOVF   79,W
+0012:  MOVWF  25
+0013:  MOVF   7A,W
+0014:  MOVWF  26
+0015:  BCF    03.7
+0016:  BCF    03.5
+0017:  BTFSS  0B.4
+0018:  GOTO   01B
+0019:  BTFSC  0B.1
+001A:  GOTO   02C
+001B:  MOVF   22,W
+001C:  MOVWF  04
+001D:  MOVF   23,W
+001E:  MOVWF  77
+001F:  MOVF   24,W
+0020:  MOVWF  78
+0021:  MOVF   25,W
+0022:  MOVWF  79
+0023:  MOVF   26,W
+0024:  MOVWF  7A
+0025:  MOVF   20,W
+0026:  MOVWF  0A
+0027:  SWAPF  21,W
+0028:  MOVWF  03
+0029:  SWAPF  7F,F
+002A:  SWAPF  7F,W
+002B:  RETFIE
+002C:  BCF    0A.3
+002D:  BCF    0A.4
+002E:  GOTO   02F
+.................... #include <main.h>
+.................... #include <16F877A.h>
+.................... //////////// Standard Header file for the PIC16F877A device ////////////////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996, 2020 Custom Computer Services          ////
+.................... //// This source code may only be used by licensed users of the CCS C  ////
+.................... //// compiler.  This source code may only be distributed to other      ////
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction ////
+.................... //// or distribution is permitted without written permission.          ////
+.................... //// Derivative programs created using this software in object code    ////
+.................... //// form are not restricted in any way.                               ////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... #device PIC16F877A
+*
+0054:  MOVF   33,W
+0055:  CLRF   78
+0056:  SUBWF  32,W
+0057:  BTFSC  03.0
+0058:  GOTO   05C
+0059:  MOVF   32,W
+005A:  MOVWF  77
+005B:  GOTO   068
+005C:  CLRF   77
+005D:  MOVLW  08
+005E:  MOVWF  34
+005F:  RLF    32,F
+0060:  RLF    77,F
+0061:  MOVF   33,W
+0062:  SUBWF  77,W
+0063:  BTFSC  03.0
+0064:  MOVWF  77
+0065:  RLF    78,F
+0066:  DECFSZ 34,F
+0067:  GOTO   05F
+0068:  RETURN
+.................... 
+.................... #list
+.................... 
+.................... #include <DEF_16F877A.h>
+.................... /**
+....................   ******************************************************************************
+....................   * Ten Tep      :        DEF_16F877A.h
+....................   * Tac Gia      :        Nguyen Quy Nhat
+....................   * Cong Ty      :        MinhHaGroup
+....................   * Website      :        BanLinhKien.Vn
+....................   * Phien Ban    :        V1.0.0
+....................   * Ngay         :        31-08-2012
+....................   * Tom Tat      :        Khai bao, dinh nghia mot so thah ghi cho PIC16F877A
+....................   *           
+....................   *
+....................   ******************************************************************************
+....................   * Chu Y      :          
+....................   *                          
+....................   *                      
+....................   ******************************************************************************
+....................   */
+.................... #ifndef __DEF_16F877A_H
+.................... #define __DEF_16F877A_H
+.................... #byte PORTA           = 0x05
+.................... #byte PORTB           = 0x06
+.................... #byte PORTC           = 0x07
+.................... #byte PORTD           = 0x08
+.................... #byte PORTE           = 0x09
+.................... #byte PINA            = 0x05
+.................... #byte PINB            = 0x06
+.................... #byte PINC            = 0x07
+.................... #byte PIND            = 0x08
+.................... #byte PINE            = 0x09
+.................... //Thanh Ghi Huong
+.................... #byte DDRA            = 0x85
+.................... #byte DDRB            = 0x86
+.................... #byte DDRC            = 0x87
+.................... #byte DDRD            = 0x88
+.................... #byte DDRE            = 0x89
+.................... /*********************PORTA**********************/
+.................... #bit PORTA_5          = PORTA.5
+.................... #bit PORTA_4          = PORTA.4
+.................... #bit PORTA_3          = PORTA.3
+.................... #bit PORTA_2          = PORTA.2
+.................... #bit PORTA_1          = PORTA.1
+.................... #bit PORTA_0          = PORTA.0
+.................... #bit PINA_0           = PINA.0
+.................... #bit PINA_1           = PINA.1
+.................... #bit PINA_2           = PINA.2
+.................... #bit PINA_3           = PINA.3
+.................... #bit PINA_4           = PINA.4
+.................... #bit PINA_5           = PINA.5
+.................... #bit DDRA_0           = DDRA.0
+.................... #bit DDRA_1           = DDRA.1
+.................... #bit DDRA_2           = DDRA.2
+.................... #bit DDRA_3           = DDRA.3
+.................... #bit DDRA_4           = DDRA.4
+.................... /*********************PORTB**********************/
+.................... #bit PORTB_7          = PORTB.7
+.................... #bit PORTB_6          = PORTB.6
+.................... #bit PORTB_5          = PORTB.5
+.................... #bit PORTB_4          = PORTB.4
+.................... #bit PORTB_3          = PORTB.3
+.................... #bit PORTB_2          = PORTB.2
+.................... #bit PORTB_1          = PORTB.1
+.................... #bit PORTB_0          = PORTB.0
+.................... #bit PINB_7           = PINB.7
+.................... #bit PINB_6           = PINB.6
+.................... #bit PINB_5           = PINB.5
+.................... #bit PINB_4           = PINB.4
+.................... #bit PINB_3           = PINB.3
+.................... #bit PINB_2           = PINB.2
+.................... #bit PINB_1           = PINB.1
+.................... #bit PINB_0           = PINB.0
+.................... #bit DDRB_0           = DDRB.0
+.................... #bit DDRB_1           = DDRB.1
+.................... #bit DDRB_2           = DDRB.2
+.................... #bit DDRB_3           = DDRB.3
+.................... #bit DDRB_4           = DDRB.4
+.................... #bit DDRB_5           = DDRB.5
+.................... #bit DDRB_6           = DDRB.6
+.................... #bit DDRB_7           = DDRB.7
+.................... /*********************PORTC**********************/
+.................... #bit PORTC_7          = PORTC.7
+.................... #bit PORTC_6          = PORTC.6
+.................... #bit PORTC_5          = PORTC.5
+.................... #bit PORTC_4          = PORTC.4
+.................... #bit PORTC_3          = PORTC.3
+.................... #bit PORTC_2          = PORTC.2
+.................... #bit PORTC_1          = PORTC.1
+.................... #bit PORTC_0          = PORTC.0
+.................... #bit PINC_7           = PINC.7
+.................... #bit PINC_6           = PINC.6
+.................... #bit PINC_5           = PINC.5
+.................... #bit PINC_4           = PINC.4
+.................... #bit PINC_3           = PINC.3
+.................... #bit PINC_2           = PINC.2
+.................... #bit PINC_1           = PINC.1
+.................... #bit PINC_0           = PINC.0
+.................... #bit DDRC_0           = DDRC.0
+.................... #bit DDRC_1           = DDRC.1
+.................... #bit DDRC_2           = DDRC.2
+.................... #bit DDRC_3           = DDRC.3
+.................... #bit DDRC_4           = DDRC.4
+.................... #bit DDRC_5           = DDRC.5
+.................... #bit DDRC_6           = DDRC.6
+.................... #bit DDRC_7           = DDRC.7
+.................... /*********************PORTD**********************/
+.................... #bit PORTD_7          = PORTD.7
+.................... #bit PORTD_6          = PORTD.6
+.................... #bit PORTD_5          = PORTD.5
+.................... #bit PORTD_4          = PORTD.4
+.................... #bit PORTD_3          = PORTD.3
+.................... #bit PORTD_2          = PORTD.2
+.................... #bit PORTD_1          = PORTD.1
+.................... #bit PORTD_0          = PORTD.0
+.................... #bit PIND_7           = PIND.7
+.................... #bit PIND_6           = PIND.6
+.................... #bit PIND_5           = PIND.5
+.................... #bit PIND_4           = PIND.4
+.................... #bit PIND_3           = PIND.3
+.................... #bit PIND_2           = PIND.2
+.................... #bit PIND_1           = PIND.1
+.................... #bit PIND_0           = PIND.0
+.................... #bit DDRD_0           = DDRD.0
+.................... #bit DDRD_1           = DDRD.1
+.................... #bit DDRD_2           = DDRD.2
+.................... #bit DDRD_3           = DDRD.3
+.................... #bit DDRD_4           = DDRD.4
+.................... #bit DDRD_5           = DDRD.5
+.................... #bit DDRD_6           = DDRD.6
+.................... #bit DDRD_7           = DDRD.7
+.................... /*********************PORTE**********************/
+.................... #bit PORTE_2          = PORTE.2
+.................... #bit PORTE_1          = PORTE.1
+.................... #bit PORTE_0          = PORTE.0
+.................... #bit PINE_2           = PINE.2
+.................... #bit PINE_1           = PINE.1
+.................... #bit PINE_0           = PINE.0
+.................... #bit DDRE_0           = DDRE.0
+.................... #bit DDRE_1           = DDRE.1
+.................... #bit DDRE_2           = DDRE.2
+.................... #ifndef DDR_OUT
+....................     #define DDR_OUT     0
+.................... #endif
+.................... #ifndef DDR_IN
+....................     #define DDR_IN      1
+.................... #endif
+.................... #endif
+.................... /******************************KET THUC FILE******************************
+.................... ______________________________NGUYEN QUY NHAT______________________________*/
+.................... 
+.................... 
+.................... #device ADC=10
+.................... #use delay(crystal=20000000)
+0069:  MOVLW  33
+006A:  MOVWF  04
+006B:  BCF    03.7
+006C:  MOVF   00,W
+006D:  BTFSC  03.2
+006E:  GOTO   07C
+006F:  MOVLW  06
+0070:  MOVWF  78
+0071:  CLRF   77
+0072:  DECFSZ 77,F
+0073:  GOTO   072
+0074:  DECFSZ 78,F
+0075:  GOTO   071
+0076:  MOVLW  7B
+0077:  MOVWF  77
+0078:  DECFSZ 77,F
+0079:  GOTO   078
+007A:  DECFSZ 00,F
+007B:  GOTO   06F
+007C:  BCF    0A.3
+007D:  BCF    0A.4
+007E:  GOTO   0C5 (RETURN)
+.................... #fuses NOWDT, HS, NOLVP, NOPUT, NOPROTECT, NODEBUG, NOBROWNOUT, NOCPD, NOWRT
+.................... 
+.................... 
+.................... 
+.................... unsigned int8 seg7ledca[10] = {0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8, 0x80, 0x90};
+*
+008B:  MOVLW  C0
+008C:  BCF    03.5
+008D:  MOVWF  27
+008E:  MOVLW  F9
+008F:  MOVWF  28
+0090:  MOVLW  A4
+0091:  MOVWF  29
+0092:  MOVLW  B0
+0093:  MOVWF  2A
+0094:  MOVLW  99
+0095:  MOVWF  2B
+0096:  MOVLW  92
+0097:  MOVWF  2C
+0098:  MOVLW  82
+0099:  MOVWF  2D
+009A:  MOVLW  F8
+009B:  MOVWF  2E
+009C:  MOVLW  80
+009D:  MOVWF  2F
+009E:  MOVLW  90
+009F:  MOVWF  30
+.................... 
+.................... unsigned int8 n = 0;
+.................... void init_pin(void)
+.................... {
+....................    DDRB_1 = 0;
+*
+0040:  BSF    03.5
+0041:  BCF    06.1
+....................    DDRB_2 = 0;
+0042:  BCF    06.2
+....................    DDRB_3 = 0;
+0043:  BCF    06.3
+....................    DDRC = 0x00;
+0044:  CLRF   07
+....................    DDRD = 0x00;
+0045:  CLRF   08
+0046:  BCF    03.5
+0047:  BCF    0A.3
+0048:  BCF    0A.4
+0049:  GOTO   0A1 (RETURN)
+.................... }
+.................... 
+.................... void init_int_ext(void);
+.................... 
+.................... #INT_EXT
+.................... void _int_ext(void)
+.................... {
+....................    clear_interrupt(INT_EXT);
+*
+002F:  BCF    0B.1
+....................    disable_interrupts(GLOBAL);
+0030:  BCF    0B.6
+0031:  BCF    0B.7
+0032:  BTFSC  0B.7
+0033:  GOTO   031
+....................    //begin interrupt external program
+....................    PORTB_1 = !PORTB_1;
+0034:  MOVLW  02
+0035:  XORWF  06,F
+....................    PORTB_2 = !PORTB_2;
+0036:  MOVLW  04
+0037:  XORWF  06,F
+....................    PORTB_3 = !PORTB_3;
+0038:  MOVLW  08
+0039:  XORWF  06,F
+....................    //end interrupt external program
+....................    enable_interrupts(GLOBAL);
+003A:  MOVLW  C0
+003B:  IORWF  0B,F
+003C:  BCF    0B.1
+003D:  BCF    0A.3
+003E:  BCF    0A.4
+003F:  GOTO   01B
+.................... }
+.................... 
+.................... void main()
+*
+007F:  MOVF   03,W
+0080:  ANDLW  1F
+0081:  MOVWF  03
+0082:  CLRF   31
+0083:  BSF    03.5
+0084:  BSF    1F.0
+0085:  BSF    1F.1
+0086:  BSF    1F.2
+0087:  BCF    1F.3
+0088:  MOVLW  07
+0089:  MOVWF  1C
+008A:  BCF    03.7
+.................... {
+....................    init_pin();
+*
+00A0:  GOTO   040
+....................    init_int_ext();
+00A1:  GOTO   04A
+....................    
+....................    while(TRUE)
+....................    {
+....................       PORTB_1 = 1;
+00A2:  BSF    06.1
+....................       PORTB_2 = 1;
+00A3:  BSF    06.2
+....................       PORTB_3 = 1;
+00A4:  BSF    06.3
+....................       for(n = 0; n < 100; n++)
+00A5:  CLRF   31
+00A6:  MOVF   31,W
+00A7:  SUBLW  63
+00A8:  BTFSS  03.0
+00A9:  GOTO   0C9
+....................       {
+....................          PORTC = seg7ledca[n/10];
+00AA:  MOVF   31,W
+00AB:  MOVWF  32
+00AC:  MOVLW  0A
+00AD:  MOVWF  33
+00AE:  CALL   054
+00AF:  MOVLW  27
+00B0:  ADDWF  78,W
+00B1:  MOVWF  04
+00B2:  BCF    03.7
+00B3:  MOVF   00,W
+00B4:  MOVWF  07
+....................          PORTD = seg7ledca[n%10];
+00B5:  MOVF   31,W
+00B6:  MOVWF  32
+00B7:  MOVLW  0A
+00B8:  MOVWF  33
+00B9:  CALL   054
+00BA:  MOVLW  27
+00BB:  ADDWF  77,W
+00BC:  MOVWF  04
+00BD:  BCF    03.7
+00BE:  MOVF   00,W
+00BF:  MOVWF  08
+....................          delay_ms(1000);
+00C0:  MOVLW  04
+00C1:  MOVWF  32
+00C2:  MOVLW  FA
+00C3:  MOVWF  33
+00C4:  GOTO   069
+00C5:  DECFSZ 32,F
+00C6:  GOTO   0C2
+00C7:  INCF   31,F
+00C8:  GOTO   0A6
+....................       }
+00C9:  GOTO   0A2
+.................... 
+....................    }
+.................... 
+.................... }
+.................... 
+00CA:  SLEEP
+.................... void init_int_ext(void)
+.................... {
+....................    DDRB_0 = 1;
+*
+004A:  BSF    03.5
+004B:  BSF    06.0
+....................    ext_int_edge(L_TO_H);
+004C:  BSF    01.6
+....................    enable_interrupts(INT_EXT);
+004D:  BCF    03.5
+004E:  BSF    0B.4
+....................    enable_interrupts(GLOBAL);
+004F:  MOVLW  C0
+0050:  IORWF  0B,F
+0051:  BCF    0A.3
+0052:  BCF    0A.4
+0053:  GOTO   0A2 (RETURN)
+.................... }
+.................... 
+
+Configuration Fuses:
+   Word  1: 3F3A   HS NOWDT NOPUT NOBROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

@@ -1,0 +1,7 @@
+#include <16F877A.h>
+#include <DEF_16F877A.h>
+#device ADC=10
+#use delay(crystal=20000000)
+#fuses NOWDT, HS, NOLVP, NOPUT, NOPROTECT, NODEBUG, NOBROWNOUT, NOCPD, NOWRT
+
+//unsigned int8 led7seg[10] = {0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8, 0x80, 0x90};
