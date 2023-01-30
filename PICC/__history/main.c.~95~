@@ -37,7 +37,7 @@ void _int_ext(void)
    disable_interrupts(GLOBAL);
    //begin interrupt external program
    n++;
-   on_lamp = 1;
+//   on_lamp = 1;
    //end interrupt external program
    enable_interrupts(GLOBAL);
 }
@@ -115,10 +115,8 @@ void on_off_lamp(void)
 {
    if(on_lamp)
    {
-      on_lamp = 0;
       PORTB_4 = 1;
-      display_on_seg7led(n);
-      delay_timer0(1000);
+      delay_ms(5000);
       PORTB_4 = 0;
    }
    else

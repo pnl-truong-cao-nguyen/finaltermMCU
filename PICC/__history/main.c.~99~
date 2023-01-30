@@ -55,6 +55,7 @@ void main()
       status_on_off(n);
       display_on_seg7led(n);
       on_off_lamp();
+      
    }
 
 }
@@ -115,10 +116,9 @@ void on_off_lamp(void)
 {
    if(on_lamp)
    {
-      on_lamp = 0;
       PORTB_4 = 1;
-      display_on_seg7led(n);
-      delay_timer0(1000);
+      on_lamp = 0;
+      delay_ms(1000);
       PORTB_4 = 0;
    }
    else

@@ -4,8 +4,9 @@ unsigned int8 seg7ledca[10] = {0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8, 0
 
 unsigned int8 n = 0;
 unsigned int8 on_lamp = 0;
-unsigned int8 i;
-unsigned int16 t;
+unsigned int16 cout = 0;
+unsigned int16 pretime = 0;
+unsigned int16 nowtime = 0;
 //=========================declare function====================================
 void init_pin(void)
 {
@@ -24,10 +25,11 @@ void status_on_off(unsigned int8 n);
 
 void display_on_seg7led(unsigned int8 n);//export 7 segment led
 
-void delay_timer0(unsigned int16 t);// delay timer 0
+void init_timer0(void);// init timer 0
 
 void on_off_lamp(void);
 
+void delay_s_timer0(unsigned int16 t);
 
 //=====================declare interrupt program===============================
 #INT_EXT
@@ -47,8 +49,6 @@ void main()
 {
    init_pin();
    init_int_ext();
-   
-   setup_timer_0(T0_INTERNAL|T0_DIV_4);//set timer 0
    
    while(TRUE)
    {
@@ -96,30 +96,21 @@ void display_on_seg7led(unsigned int8 n)
    PORTD = seg7ledca[n%10];
 }
 
-void delay_timer0(unsigned int16 t)
+void init_timer0(void)
 {
-   do
-   {
-      for(i = 0; i < 5; i++)
-      {
-         set_timer0(5);//initial count value
-         // T = 4 * (1 / Fosc) * Prescaler
-         while(get_timer0() < 255);
-      }
-      t--;
-   }
-   while(t != 0);
+   setup_timer_0(T0_INTERNAL|T0_DIV_4);
+   TMR0IF = 1;
+   set_timer0(6);//initial count value
+   // T = 4 * (1 / Fosc) * Prescaler
 }
 
 void on_off_lamp(void)
 {
    if(on_lamp)
    {
-      on_lamp = 0;
       PORTB_4 = 1;
-      display_on_seg7led(n);
-      delay_timer0(1000);
-      PORTB_4 = 0;
+      init_timer0();
+      
    }
    else
    {

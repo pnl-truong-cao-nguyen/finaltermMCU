@@ -118,7 +118,7 @@ void on_off_lamp(void)
       on_lamp = 0;
       PORTB_4 = 1;
       display_on_seg7led(n);
-      delay_timer0(1000);
+      delay_timer0(5000);
       PORTB_4 = 0;
    }
    else
