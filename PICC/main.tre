@@ -1,10 +1,11 @@
 ÀÄmain
-   ÃÄMAIN  0/76  Ram=1
+   ÃÄMAIN  0/43  Ram=0
    ³  ÃÄ@cinit1  (Inline)  Ram=0
    ³  ÃÄ@cinit2  (Inline)  Ram=0
-   ³  ÃÄinit_pin  0/10  Ram=0
+   ³  ÃÄinit_pin  0/11  Ram=0
    ³  ÃÄinit_int_ext  0/10  Ram=0
-   ³  ÃÄ@DIV88  0/21  Ram=3
-   ³  ÃÄ@DIV88  0/21  Ram=3
-   ³  ÀÄ@delay_ms1  0/22  Ram=1
-   ÀÄ_int_ext  0/17  Ram=0
+   ³  ÃÄpeople  0/22  Ram=1
+   ³  ÀÄdisplay_on_seg7led  0/25  Ram=2
+   ³     ÃÄ@DIV88  0/21  Ram=3
+   ³     ÀÄ@DIV88  0/21  Ram=3
+   ÀÄ_int_ext  0/13  Ram=0

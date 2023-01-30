@@ -1,9 +1,10 @@
-D G "__PCM__" 0 60 ""5.112""
-D G "__DEVICE__" 0 60 "877"
-D G "__DATE__" 0 60 ""29-Jan-23""
-D G "__TIME__" 0 60 ""19:55:44""
-D G "_UNICODE" 0 60 ""?""
-D G "__EVAL" 0 60 ""?"" "Standard Header file for the PIC16F877A device ////////////////"
+F N "display_on_seg7led" 0 77 ""
+D G "__PCM__" 0 83 ""5.112""
+D G "__DEVICE__" 0 83 "877"
+D G "__DATE__" 0 83 ""30-Jan-23""
+D G "__TIME__" 0 83 ""15:25:42""
+D G "_UNICODE" 0 83 ""?""
+D G "__EVAL" 0 83 ""?"" "Standard Header file for the PIC16F877A device ////////////////"
 c L "set_tris_a" 2 3 6 "FUNCTION"
 F N "set_tris_a" 2 37 ""
 V L "value" 2 37 "int8" `55 
@@ -1187,16 +1188,28 @@ V G "seg7ledca" 0 3 "int8[10]" `813
 V G "n" 0 5 "int8" `814 
 F N "init_pin" 0 6 ""
 F G "init_pin" 0 7 "void()" `815 
-F N "init_int_ext" 0 15 ""
-f G "init_int_ext" 0 15 "void()" `816 
-F N "_int_ext" 0 18 ""
-F G "_int_ext" 0 19 "void()" `817 
-C L "_int_ext" 0 22 1 "FUNCTION"
-C L "_int_ext" 0 22 1 "FUNCTION"
-F N "MAIN" 0 30 ""
-F G "MAIN" 0 31 "void()" `818 
-F N "init_int_ext" 0 51 ""
-F G "init_int_ext" 0 52 "void()" `816 
+F N "init_int_ext" 0 16 ""
+f G "init_int_ext" 0 16 "void()" `816 
+F N "_int_ext" 0 19 ""
+F G "_int_ext" 0 20 "void()" `817 
+C L "_int_ext" 0 23 1 "FUNCTION"
+C L "_int_ext" 0 23 1 "FUNCTION"
+F N "people" 0 30 ""
+V L "n" 0 30 "int8" `819 
+f G "people" 0 30 "void(int8 n)" `818 
+F N "display_on_seg7led" 0 32 ""
+V L "n" 0 32 "int8" `821 
+f G "display_on_seg7led" 0 32 "void(int8 n)" `820 
+F N "MAIN" 0 34 ""
+F G "MAIN" 0 35 "void()" `822 
+F N "init_int_ext" 0 47 ""
+F G "init_int_ext" 0 48 "void()" `816 
+F N "people" 0 55 ""
+V L "n" 0 55 "int8" `826 
+F G "people" 0 56 "void(int8 n)" `818 
+F N "display_on_seg7led" 0 77 ""
+V L "n" 0 77 "int8" `826 
+F G "display_on_seg7led" 0 78 "void(int8 n)" `820 
 F B "reset_cpu" 0 0
 F B "abs" 1 0
 F B "sleep" 0 0

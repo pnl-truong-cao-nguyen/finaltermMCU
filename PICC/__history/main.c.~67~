@@ -8,7 +8,6 @@ void init_pin(void)
    DDRB_1 = 0;
    DDRB_2 = 0;
    DDRB_3 = 0;
-   DDRB_4 = 0;
    DDRC = 0x00;
    DDRD = 0x00;
 }
@@ -21,15 +20,12 @@ void _int_ext(void)
    clear_interrupt(INT_EXT);
    disable_interrupts(GLOBAL);
    //begin interrupt external program
-   n++;
-   PORTB_4 = 1;
+   PORTB_1 = !PORTB_1;
+   PORTB_2 = !PORTB_2;
+   PORTB_3 = !PORTB_3;
    //end interrupt external program
    enable_interrupts(GLOBAL);
 }
-
-void people(unsigned int8 n);
-
-void display_on_seg7led(unsigned int8 n);
 
 void main()
 {
@@ -38,8 +34,16 @@ void main()
    
    while(TRUE)
    {
-      people(n);
-      display_on_seg7led(n);
+      PORTB_1 = 1;
+      PORTB_2 = 1;
+      PORTB_3 = 1;
+      for(n = 0; n < 100; n++)
+      {
+         PORTC = seg7ledca[n/10];
+         PORTD = seg7ledca[n%10];
+         delay_ms(1000);
+      }
+
    }
 
 }
@@ -52,30 +56,3 @@ void init_int_ext(void)
    enable_interrupts(GLOBAL);
 }
 
-void people(unsigned int8 n)
-{
-   if(n < 10)
-   {
-      PORTB_1 = 1;
-      PORTB_2 = 0;
-      PORTB_3 = 0;
-   }
-   else if(n < 20)
-   {
-      PORTB_1 = 0;
-      PORTB_2 = 1;
-      PORTB_3 = 0;
-   }
-   else
-   {
-      PORTB_1 = 0;
-      PORTB_2 = 0;
-      PORTB_3 = 1;
-   }
-}
-
-void display_on_seg7led(unsigned int8 n)
-{
-   PORTC = seg7ledca[n/10];
-   PORTD = seg7ledca[n%10];
-}

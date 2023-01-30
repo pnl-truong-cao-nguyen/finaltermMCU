@@ -1,84 +1,84 @@
 004-005 @READ_PROGRAM_MEMORY8.P1
 004-005 @WRITE_PROGRAM_MEMORY8.P2
-005.0   PORTA_0
 005     PINA
-005.0   PINA_0
+005.0   PORTA_0
 005     PORTA
-005.1   PORTA_1
+005.0   PINA_0
 005.1   PINA_1
+005.1   PORTA_1
 005.2   PINA_2
 005.2   PORTA_2
 005.3   PORTA_3
 005.3   PINA_3
-005.4   PINA_4
 005.4   PORTA_4
+005.4   PINA_4
 005.5   PINA_5
 005.5   PORTA_5
 006.0   PORTB_0
+006     PORTB
 006.0   PINB_0
 006     PINB
-006     PORTB
-006.1   PORTB_1
 006.1   PINB_1
-006.2   PINB_2
+006.1   PORTB_1
 006.2   PORTB_2
+006.2   PINB_2
 006.3   PORTB_3
 006.3   PINB_3
-006.4   PORTB_4
 006.4   PINB_4
-006.5   PINB_5
+006.4   PORTB_4
 006.5   PORTB_5
+006.5   PINB_5
 006.6   PINB_6
 006.6   PORTB_6
 006.7   PORTB_7
 006.7   PINB_7
-007     PINC
-007     PORTC
-007.0   PORTC_0
 007.0   PINC_0
+007     PINC
+007.0   PORTC_0
+007     PORTC
 007.1   PINC_1
 007.1   PORTC_1
-007.2   PINC_2
 007.2   PORTC_2
-007.3   PINC_3
+007.2   PINC_2
 007.3   PORTC_3
+007.3   PINC_3
 007.4   PORTC_4
 007.4   PINC_4
-007.5   PORTC_5
 007.5   PINC_5
-007.6   PORTC_6
+007.5   PORTC_5
 007.6   PINC_6
-007.7   PINC_7
+007.6   PORTC_6
 007.7   PORTC_7
+007.7   PINC_7
 008     PORTD
-008.0   PIND_0
-008     PSP_DATA
 008.0   PORTD_0
+008     PSP_DATA
 008     PIND
-008.1   PORTD_1
+008.0   PIND_0
 008.1   PIND_1
+008.1   PORTD_1
 008.2   PIND_2
 008.2   PORTD_2
-008.3   PIND_3
 008.3   PORTD_3
+008.3   PIND_3
 008.4   PORTD_4
 008.4   PIND_4
 008.5   PIND_5
 008.5   PORTD_5
-008.6   PORTD_6
 008.6   PIND_6
+008.6   PORTD_6
 008.7   PORTD_7
 008.7   PIND_7
+009.0   PINE_0
 009     PORTE
 009     PINE
-009.0   PINE_0
 009.0   PORTE_0
 009.1   PINE_1
 009.1   PORTE_1
 009.2   PINE_2
 009.2   PORTE_2
-015     CCP_1
 015     CCP_1_LOW
+015     CCP_1
 016     CCP_1_HIGH
 01B     CCP_2_LOW
 01B     CCP_2
@@ -92,19 +92,20 @@
 026     @INTERRUPT_AREA
 027-030 seg7ledca
 031     n
-032     @DIV88.P1
-032     MAIN.@SCRATCH1
-033     @delay_ms1.P1
-033     @DIV88.P2
-034     @DIV88.@SCRATCH1
+032     display_on_seg7led.n
+032     people.n
+033     @DIV88.P1
+033     display_on_seg7led.@SCRATCH1
+034     @DIV88.P1
+035     @DIV88.@SCRATCH1
 077     @SCRATCH
 078     @SCRATCH
 078     _RETURN_
 079     @SCRATCH
 07A     @SCRATCH
 07F     @INTERRUPT_AREA
-085     DDRA
 085.0   DDRA_0
+085     DDRA
 085.1   DDRA_1
 085.2   DDRA_2
 085.3   DDRA_3
@@ -127,8 +128,8 @@
 087.5   DDRC_5
 087.6   DDRC_6
 087.7   DDRC_7
-088.0   DDRD_0
 088     DDRD
+088.0   DDRD_0
 088.1   DDRD_1
 088.2   DDRD_2
 088.3   DDRD_3
@@ -210,29 +211,30 @@ FFF     @INTERRUPT_AREA
 
 ROM Allocation:
 00002F  _int_ext
-000040  init_pin
-00004A  init_int_ext
-000054  @DIV88
-000069  @delay_ms1
-00007F  MAIN
-00007F  @cinit1
-00008A  @cinit2
+00003C  init_pin
+000047  init_int_ext
+000051  people
+000067  @DIV88
+00007C  display_on_seg7led
+000095  @cinit1
+000095  MAIN
+0000A0  @cinit2
 
 Project Directory:
-    D:\OneDrive - The University of Technology\documents_pnl\DUT\dai_hoc_nam_3\HocKy1\kiThuatViDieuKhien\picc\project_final_test\
+    D:\OneDrive - The University of Technology\documents_pnl\DUT\dai_hoc_nam_3\HocKy1\kiThuatViDieuKhien\finaltermMCU\PICC\
 
 Project Files:
-    main.c                                                  [29-Jan-23 19:55  CRC=5666E217]
+    main.c                                                  [30-Jan-23 15:25  CRC=7DC4580F]
     main.h                                                  [29-Jan-23 15:13  CRC=D872A938]
     ..\..\..\..\..\..\..\..\Program Files\PICC\Devices\16F877A.h [21-Oct-22 11:02  CRC=6A06E202]
     DEF_16F877A.h                                           [03-Jan-23 19:17  CRC=7B681607]
 
-Source signature=8FB0995F
+Source signature=B70E0F57
 Program memory checksum=0000
-Hex file CRC=0179
+Hex file CRC=79CA
 
 Units:
-    D:\OneDrive - The University of Technology\documents_pnl\DUT\dai_hoc_nam_3\HocKy1\kiThuatViDieuKhien\picc\project_final_test\main (main)
+    D:\OneDrive - The University of Technology\documents_pnl\DUT\dai_hoc_nam_3\HocKy1\kiThuatViDieuKhien\finaltermMCU\PICC\main (main)
 
 Compiler Settings:
     Processor:      PIC16F877A

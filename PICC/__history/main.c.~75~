@@ -22,7 +22,6 @@ void _int_ext(void)
    disable_interrupts(GLOBAL);
    //begin interrupt external program
    n++;
-   PORTB_4 = 1;
    //end interrupt external program
    enable_interrupts(GLOBAL);
 }
