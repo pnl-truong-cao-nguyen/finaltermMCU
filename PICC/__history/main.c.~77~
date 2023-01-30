@@ -21,8 +21,10 @@ void _int_ext(void)
    clear_interrupt(INT_EXT);
    disable_interrupts(GLOBAL);
    //begin interrupt external program
+   
    n++;
    PORTB_4 = 1;
+   
    //end interrupt external program
    enable_interrupts(GLOBAL);
 }

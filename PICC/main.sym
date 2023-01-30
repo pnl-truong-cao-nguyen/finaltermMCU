@@ -224,12 +224,12 @@ Project Directory:
     D:\OneDrive - The University of Technology\documents_pnl\DUT\dai_hoc_nam_3\HocKy1\kiThuatViDieuKhien\finaltermMCU\PICC\
 
 Project Files:
-    main.c                                                  [30-Jan-23 16:41  CRC=9CBBBD6C]
+    main.c                                                  [30-Jan-23 16:55  CRC=7DC4580F]
     main.h                                                  [29-Jan-23 15:13  CRC=D872A938]
     ..\..\..\..\..\..\..\..\Program Files\PICC\Devices\16F877A.h [21-Oct-22 11:02  CRC=6A06E202]
     DEF_16F877A.h                                           [03-Jan-23 19:17  CRC=7B681607]
 
-Source signature=D60574B4
+Source signature=B70E0F57
 Program memory checksum=0000
 Hex file CRC=79CA
 
