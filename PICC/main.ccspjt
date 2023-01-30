@@ -50,7 +50,7 @@ D1_L23=[71679]Stopped Editing.
 D1_L24=[71740]Started Editing.
 D1_L25=[72043]Stopped Editing.
 D2=30-01-2023
-D2_L=11
+D2_L=13
 D2_L1=[53277]Project Opened.
 D2_L2=[53401]Started Editing.
 D2_L3=[53496]Stopped Editing.
@@ -64,6 +64,8 @@ D2_L8=[55428]Started Editing.
 D2_L9=[55818]Stopped Editing.
 D2_L10=[58981]Started Editing.
 D2_L11=[59281]Stopped Editing.
+D2_L12=[60077]Started Editing.
+D2_L13=[60379]Stopped Editing.
 
 [Opened Files]
 1=main.c
@@ -81,7 +83,7 @@ t5=1
 Type=4
 
 [defines]
-buildcount=80
+buildcount=81
 [Units]
 Count=1
 1=main (main)

@@ -1,4 +1,4 @@
-CCS PCM C Compiler, Version 5.112, 5967               30-Jan-23 15:25
+CCS PCM C Compiler, Version 5.112, 5967               30-Jan-23 16:41
 
                Filename:   D:\OneDrive - The University of Technology\documents_pnl\DUT\dai_hoc_nam_3\HocKy1\kiThuatViDieuKhien\finaltermMCU\PICC\main.lst
 
@@ -312,10 +312,12 @@ CCS PCM C Compiler, Version 5.112, 5967               30-Jan-23 15:25
 0032:  BTFSC  0B.7
 0033:  GOTO   031
 ....................    //begin interrupt external program
+....................    
 ....................    n++;
 0034:  INCF   31,F
 ....................    PORTB_4 = 1;
 0035:  BSF    06.4
+....................    
 ....................    //end interrupt external program
 ....................    enable_interrupts(GLOBAL);
 0036:  MOVLW  C0
