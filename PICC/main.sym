@@ -2,8 +2,8 @@
 004-005 @WRITE_PROGRAM_MEMORY8.P2
 005.0   PORTA_0
 005     PINA
-005     PORTA
 005.0   PINA_0
+005     PORTA
 005.1   PORTA_1
 005.1   PINA_1
 005.2   PINA_2
@@ -14,51 +14,51 @@
 005.4   PORTA_4
 005.5   PINA_5
 005.5   PORTA_5
+006.0   PINB_0
+006     PINB
 006.0   PORTB_0
 006     PORTB
-006     PINB
-006.0   PINB_0
 006.1   PINB_1
 006.1   PORTB_1
-006.2   PINB_2
 006.2   PORTB_2
-006.3   PORTB_3
+006.2   PINB_2
 006.3   PINB_3
+006.3   PORTB_3
 006.4   PORTB_4
 006.4   PINB_4
-006.5   PINB_5
 006.5   PORTB_5
-006.6   PORTB_6
+006.5   PINB_5
 006.6   PINB_6
+006.6   PORTB_6
 006.7   PINB_7
 006.7   PORTB_7
 007.0   PINC_0
 007     PINC
-007.0   PORTC_0
 007     PORTC
-007.1   PORTC_1
+007.0   PORTC_0
 007.1   PINC_1
+007.1   PORTC_1
 007.2   PORTC_2
 007.2   PINC_2
 007.3   PORTC_3
 007.3   PINC_3
-007.4   PINC_4
 007.4   PORTC_4
+007.4   PINC_4
 007.5   PINC_5
 007.5   PORTC_5
 007.6   PINC_6
 007.6   PORTC_6
 007.7   PORTC_7
 007.7   PINC_7
-008     PIND
 008.0   PIND_0
 008     PORTD
-008     PSP_DATA
 008.0   PORTD_0
-008.1   PORTD_1
+008     PIND
+008     PSP_DATA
 008.1   PIND_1
-008.2   PIND_2
+008.1   PORTD_1
 008.2   PORTD_2
+008.2   PIND_2
 008.3   PORTD_3
 008.3   PIND_3
 008.4   PIND_4
@@ -67,12 +67,12 @@
 008.5   PORTD_5
 008.6   PIND_6
 008.6   PORTD_6
-008.7   PIND_7
 008.7   PORTD_7
-009     PINE
+008.7   PIND_7
 009.0   PINE_0
-009.0   PORTE_0
 009     PORTE
+009     PINE
+009.0   PORTE_0
 009.1   PINE_1
 009.1   PORTE_1
 009.2   PINE_2
@@ -92,23 +92,25 @@
 026     @INTERRUPT_AREA
 027-030 seg7ledca
 031     n
-032     status_on_off.n
-032     display_on_seg7led.n
-033     @DIV88.P1
-033     display_on_seg7led.@SCRATCH1
-034     @DIV88.P1
-035     @DIV88.@SCRATCH1
-036     _int_ext.@SCRATCH1
-036     _int_timer0.@SCRATCH1
-037     @delay_ms1.P1
+032-033 i
+034     status_on_off.n
+034     display_on_seg7led.n
+035     @DIV88.P1
+035     display_on_seg7led.@SCRATCH1
+036     @DIV88.P1
+037     @DIV88.@SCRATCH1
+038     @delay_ms1.P1
+038     _int_ext.@SCRATCH1
+038     _int_timer0.@SCRATCH1
+039     _int_ext.@SCRATCH2
 077     @SCRATCH
 078     @SCRATCH
 078     _RETURN_
 079     @SCRATCH
 07A     @SCRATCH
 07F     @INTERRUPT_AREA
-085.0   DDRA_0
 085     DDRA
+085.0   DDRA_0
 085.1   DDRA_1
 085.2   DDRA_2
 085.3   DDRA_3
@@ -131,8 +133,8 @@
 087.5   DDRC_5
 087.6   DDRC_6
 087.7   DDRC_7
-088.0   DDRD_0
 088     DDRD
+088.0   DDRD_0
 088.1   DDRD_1
 088.2   DDRD_2
 088.3   DDRD_3
@@ -140,8 +142,8 @@
 088.5   DDRD_5
 088.6   DDRD_6
 088.7   DDRD_7
-089.0   DDRE_0
 089     DDRE
+089.0   DDRE_0
 089.1   DDRE_1
 089.2   DDRE_2
 09C.6   C1OUT
@@ -213,31 +215,31 @@ FFF     @INTERRUPT_AREA
 1FFF     @INTERRUPT_AREA
 
 ROM Allocation:
-000036  @delay_ms1
-00004A  _int_ext
-000058  _int_timer0
-00008D  init_pin
-00009D  init_int_ext
-0000A6  init_int_timer0
-0000B4  status_on_off
-0000CA  @DIV88
-0000DF  display_on_seg7led
-0000F8  MAIN
-0000F8  @cinit1
-000103  @cinit2
+000036  _int_ext
+00006A  @delay_ms1
+00007E  _int_timer0
+0000B3  init_pin
+0000C3  init_int_ext
+0000CC  init_int_timer0
+0000DA  status_on_off
+0000F0  @DIV88
+000105  display_on_seg7led
+00011E  MAIN
+00011E  @cinit1
+00012B  @cinit2
 
 Project Directory:
     D:\OneDrive - The University of Technology\documents_pnl\DUT\dai_hoc_nam_3\HocKy1\kiThuatViDieuKhien\finaltermMCU\PICC\
 
 Project Files:
-    main.c                                                  [31-Jan-23 22:28  CRC=C0DACEAA]
+    main.c                                                  [01-Feb-23 00:26  CRC=6F0A36C3]
     main.h                                                  [29-Jan-23 15:13  CRC=D872A938]
     ..\..\..\..\..\..\..\..\Program Files\PICC\Devices\16F877A.h [21-Oct-22 11:02  CRC=6A06E202]
     DEF_16F877A.h                                           [03-Jan-23 19:17  CRC=7B681607]
 
-Source signature=FA2485F2
+Source signature=A853EE0B
 Program memory checksum=0000
-Hex file CRC=D2E9
+Hex file CRC=2D63
 
 Units:
     D:\OneDrive - The University of Technology\documents_pnl\DUT\dai_hoc_nam_3\HocKy1\kiThuatViDieuKhien\finaltermMCU\PICC\main (main)

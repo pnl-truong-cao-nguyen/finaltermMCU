@@ -3,6 +3,7 @@
 unsigned int8 seg7ledca[10] = {0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8, 0x80, 0x90};//7 segment led code common anode
 
 unsigned int8 n = 0;
+unsigned int16 i = 0;
 
 //=========================declare function====================================
 void init_pin(void)
@@ -34,7 +35,22 @@ void init_int_timer0(void);//init interrupt timer 0
 void _int_ext(void)
 {
    PORTB_4 = 1;
-   delay_ms(1000);
+   i = 0;
+   do
+   {
+      set_timer1(0);
+      while(get_timer1() < 50000)
+      {
+         if(PORTB_0)
+         {
+            i = 0;
+            while(PORTB_0);
+         }
+      }
+      i++;
+   }
+   while(i < 100);
+   
    PORTB_4 = 0;
    n++;
 }
@@ -89,12 +105,14 @@ void _int_timer0(void)
    set_timer0(231);
 }
 
+
 //===========================main program======================================
 void main()
 {
    init_pin();
    init_int_ext();
    init_int_timer0();
+   setup_timer_1(T1_INTERNAL|T1_DIV_BY_1);//set timer1
    
    while(TRUE)
    {

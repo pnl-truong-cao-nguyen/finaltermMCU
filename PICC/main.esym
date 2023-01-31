@@ -1,9 +1,9 @@
-D G "__PCM__" 0 163 ""5.112""
-D G "__DEVICE__" 0 163 "877"
-D G "__DATE__" 0 163 ""31-Jan-23""
-D G "__TIME__" 0 163 ""22:28:23""
-D G "_UNICODE" 0 163 ""?""
-D G "__EVAL" 0 163 ""?"" "Standard Header file for the PIC16F877A device ////////////////"
+D G "__PCM__" 0 181 ""5.112""
+D G "__DEVICE__" 0 181 "877"
+D G "__DATE__" 0 181 ""01-Feb-23""
+D G "__TIME__" 0 181 ""00:26:47""
+D G "_UNICODE" 0 181 ""?""
+D G "__EVAL" 0 181 ""?"" "Standard Header file for the PIC16F877A device ////////////////"
 c L "set_tris_a" 2 3 6 "FUNCTION"
 F N "set_tris_a" 2 37 ""
 V L "value" 2 37 "int8" `55 
@@ -1186,9 +1186,10 @@ C L "jump_to_isr" 3 146 2 "*"
 V G "seg7ledca" 0 3 "int8[10]" `813 
 C L "jump_to_isr" 0 3 1 "FUNCTION"
 V G "n" 0 5 "int8" `814 
+V G "i" 0 6 "int16" `815 
 C L "jump_to_isr" 0 3 1 "FUNCTION"
-F N "init_pin" 0 8 ""
-F G "init_pin" 0 9 "void()" `815  "set up port"
+F N "init_pin" 0 9 ""
+F G "init_pin" 0 10 "void()" `816  "set up port"
 C L "init_pin" 0 3 1 "FUNCTION"
 C L "init_pin" 0 3 1 "FUNCTION"
 C L "init_pin" 0 3 1 "FUNCTION"
@@ -1200,43 +1201,44 @@ C L "init_pin" 0 3 1 "FUNCTION"
 C L "init_pin" 0 3 1 "FUNCTION"
 C L "init_pin" 0 3 1 "FUNCTION"
 C L "init_pin" 0 3 1 "FUNCTION"
-F N "init_int_ext" 0 24 ""
-f G "init_int_ext" 0 24 "void()" `816  "init interrupt external"
-F N "status_on_off" 0 26 ""
-V L "n" 0 26 "int8" `818 
-f G "status_on_off" 0 26 "void(int8 n)" `817  "notification status"
-F N "display_on_seg7led" 0 28 ""
-V L "n" 0 28 "int8" `820 
-f G "display_on_seg7led" 0 28 "void(int8 n)" `819  "export 7 segment led"
-F N "init_int_timer0" 0 30 ""
-f G "init_int_timer0" 0 30 "void()" `821  "init interrupt timer 0"
+F N "init_int_ext" 0 25 ""
+f G "init_int_ext" 0 25 "void()" `817  "init interrupt external"
+F N "status_on_off" 0 27 ""
+V L "n" 0 27 "int8" `819 
+f G "status_on_off" 0 27 "void(int8 n)" `818  "notification status"
+F N "display_on_seg7led" 0 29 ""
+V L "n" 0 29 "int8" `821 
+f G "display_on_seg7led" 0 29 "void(int8 n)" `820  "export 7 segment led"
+F N "init_int_timer0" 0 31 ""
+f G "init_int_timer0" 0 31 "void()" `822  "init interrupt timer 0"
 C L "init_int_timer0" 0 3 1 "FUNCTION"
-F N "_int_ext" 0 34 ""
-F G "_int_ext" 0 35 "void()" `822 
-F N "_int_timer0" 0 43 ""
-F G "_int_timer0" 0 44 "void()" `823 
+F N "_int_ext" 0 35 ""
+F G "_int_ext" 0 36 "void()" `823 
+F N "_int_timer0" 0 59 ""
+F G "_int_timer0" 0 60 "void()" `824 
 C L "_int_timer0" 0 3 1 "FUNCTION"
 C L "_int_timer0" 0 3 1 "FUNCTION"
 C L "_int_timer0" 0 3 1 "FUNCTION"
 C L "MAIN" 0 3 1 "FUNCTION"
-F N "MAIN" 0 93 ""
-F G "MAIN" 0 94 "void()" `824 
+F N "MAIN" 0 110 ""
+F G "MAIN" 0 111 "void()" `825 
+C L "MAIN" 0 3 1 "FUNCTION"
 C L "MAIN" 0 3 1 "FUNCTION"
 C L "MAIN" 0 3 1 "FUNCTION"
 C L "init_int_ext" 0 3 1 "FUNCTION"
-F N "init_int_ext" 0 115 ""
-F G "init_int_ext" 0 116 "void()" `816  "interrupt at RB0"
-F N "init_int_timer0" 0 123 ""
-F G "init_int_timer0" 0 124 "void()" `821  "interrupt timer 0"
-F N "status_on_off" 0 132 ""
-V L "n" 0 132 "int8" `828 
-F G "status_on_off" 0 133 "void(int8 n)" `817 
+F N "init_int_ext" 0 133 ""
+F G "init_int_ext" 0 134 "void()" `817  "interrupt at RB0"
+F N "init_int_timer0" 0 141 ""
+F G "init_int_timer0" 0 142 "void()" `822  "interrupt timer 0"
+F N "status_on_off" 0 150 ""
+V L "n" 0 150 "int8" `829 
+F G "status_on_off" 0 151 "void(int8 n)" `818 
 C L "status_on_off" 0 3 1 "FUNCTION"
 C L "status_on_off" 0 3 1 "FUNCTION"
 C L "status_on_off" 0 3 1 "FUNCTION"
-F N "display_on_seg7led" 0 157 ""
-V L "n" 0 157 "int8" `828 
-F G "display_on_seg7led" 0 158 "void(int8 n)" `819 
+F N "display_on_seg7led" 0 175 ""
+V L "n" 0 175 "int8" `829 
+F G "display_on_seg7led" 0 176 "void(int8 n)" `820 
 C L "display_on_seg7led" 0 3 1 "FUNCTION"
 F B "reset_cpu" 0 0
 F B "abs" 1 0

@@ -1,5 +1,5 @@
 ÀÄmain
-   ÃÄMAIN  0/53  Ram=0
+   ÃÄMAIN  0/57  Ram=0
    ³  ÃÄ@cinit1  (Inline)  Ram=0
    ³  ÃÄ@cinit2  (Inline)  Ram=0
    ³  ÃÄinit_pin  0/16  Ram=0
@@ -9,8 +9,7 @@
    ³  ÀÄdisplay_on_seg7led  0/25  Ram=2
    ³     ÃÄ@DIV88  0/21  Ram=3
    ³     ÀÄ@DIV88  0/21  Ram=3
-   ÃÄ_int_ext  0/14  Ram=1
-   ³  ÀÄ@delay_ms1  0/20  Ram=1
+   ÃÄ_int_ext  0/52  Ram=2
    ÀÄ_int_timer0  0/53  Ram=1
       ÃÄ@delay_ms1  0/20  Ram=1
       ÃÄ@delay_ms1  0/20  Ram=1
