@@ -3,43 +3,90 @@
 unsigned int8 seg7ledca[10] = {0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8, 0x80, 0x90};//7 segment led code common anode
 
 unsigned int8 n = 0;
-unsigned int8 on_lamp = 0;
-unsigned int8 i;
-unsigned int16 t;
+
 //=========================declare function====================================
 void init_pin(void)
 {
 // set up port
-   DDRB_1 = 0;
-   DDRB_2 = 0;
-   DDRB_3 = 0;
-   DDRB_4 = 0;
-   DDRC = 0x00;
-   DDRD = 0x00;
+   DDRA_0 = 1;//button on/off sensor
+   DDRA_1 = 1;//button on/off light
+   DDRA_2 = 1;//button reset count
+   DDRB_0 = 1;//input sensor
+   DDRB_1 = 0;//signal led green
+   DDRB_2 = 0;//signal led yellow
+   DDRB_3 = 0;//signal led red
+   DDRB_4 = 0;//light
+   DDRB_5 = 0;//signal sensor led
+   DDRC = 0x00;//7 segment led dozens
+   DDRD = 0x00;//7 segment led units
 }
 
 void init_int_ext(void);//init interrupt external
 
-void status_on_off(unsigned int8 n);
+void status_on_off(unsigned int8 n);//notification status
 
 void display_on_seg7led(unsigned int8 n);//export 7 segment led
 
-void delay_timer0(unsigned int16 t);// delay timer 0
-
-void on_off_lamp(void);
-
+void init_int_timer0(void);//init interrupt timer 0
 
 //=====================declare interrupt program===============================
 #INT_EXT
 void _int_ext(void)
 {
-   clear_interrupt(INT_EXT);
-   disable_interrupts(GLOBAL);
-   //begin interrupt external program
+   PORTB_4 = 1;
+   delay_ms(1000);
+   PORTB_4 = 0;
    n++;
-   on_lamp = 1;
-   //end interrupt external program
-   enable_interrupts(GLOBAL);
+}
+
+#INT_TIMER0
+void _int_timer0(void)
+{
+   if(PORTA_0)
+   {
+      //on/off sensor
+      delay_ms(20);
+      if(PORTA_0)
+      {
+         DDRB_0 = !DDRB_0;
+         while(PORTA_0);
+         if(PORTB_4)
+         {
+            PORTB_4 = 0;
+            n++;
+         }
+      }     
+   }
+   if(DDRB_0 == 0)
+   {
+      if(PORTA_1)
+      {
+         //on/off light when sensor off
+         delay_ms(20);
+         if(PORTA_1)
+         {
+            PORTB_4 = !PORTB_4;
+            if(!PORTB_4)
+            {
+               n++;
+            }
+            while(PORTA_1);
+         }   
+      }
+   }
+   if(PORTA_2)
+   {
+      //reset counter on/off light
+      delay_ms(20);
+      if(PORTA_2)
+      {
+         n = 0;
+         PORTB_4 = 0;
+         while(PORTA_2);
+      }
+      
+   }
+   set_timer0(231);
 }
 
 //===========================main program======================================
@@ -47,24 +94,38 @@ void main()
 {
    init_pin();
    init_int_ext();
-   
-   setup_timer_0(T0_INTERNAL|T0_DIV_4);//set timer 0
+   init_int_timer0();
    
    while(TRUE)
    {
       status_on_off(n);
       display_on_seg7led(n);
-      on_off_lamp();
+      if(DDRB_0)
+      {
+         PORTB_5 = 1;//sensor on
+      }
+      else
+      {
+         PORTB_5 = 0;//sensor off
+      }
    }
-
 }
 
 //==================================function===================================
 void init_int_ext(void)
 {
-   DDRB_0 = 1;
+   //interrupt at RB0
    ext_int_edge(L_TO_H);
    enable_interrupts(INT_EXT);
+   enable_interrupts(GLOBAL);
+}
+
+void init_int_timer0(void)
+{
+   //interrupt timer 0
+   setup_timer_0(T0_INTERNAL|T0_DIV_1);
+   set_timer0(231);
+   enable_interrupts(INT_TIMER0);
    enable_interrupts(GLOBAL);
 }
 
@@ -72,18 +133,21 @@ void status_on_off(unsigned int8 n)
 {
    if(n < 10)
    {
+      //green led
       PORTB_1 = 1;
       PORTB_2 = 0;
       PORTB_3 = 0;
    }
    else if(n < 20)
    {
+      //yellow led
       PORTB_1 = 0;
       PORTB_2 = 1;
       PORTB_3 = 0;
    }
    else
    {
+      //red led
       PORTB_1 = 0;
       PORTB_2 = 0;
       PORTB_3 = 1;
@@ -92,38 +156,6 @@ void status_on_off(unsigned int8 n)
 
 void display_on_seg7led(unsigned int8 n)
 {
-   PORTC = seg7ledca[n/10];
-   PORTD = seg7ledca[n%10];
+   PORTC = seg7ledca[n/10];//7 segment led dozens
+   PORTD = seg7ledca[n%10];//7 segment led units
 }
-
-void delay_timer0(unsigned int16 t)
-{
-   do
-   {
-      for(i = 0; i < 5; i++)
-      {
-         set_timer0(5);//initial count value
-         // T = 4 * (1 / Fosc) * Prescaler
-         while(get_timer0() < 255);
-      }
-      t--;
-   }
-   while(t != 0);
-}
-
-void on_off_lamp(void)
-{
-   if(on_lamp)
-   {
-      on_lamp = 0;
-      PORTB_4 = 1;
-      display_on_seg7led(n);
-      delay_timer0(1000);
-      PORTB_4 = 0;
-   }
-   else
-   {
-      PORTB_4 = 0;
-   }
-}
-

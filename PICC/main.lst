@@ -1,18 +1,18 @@
-CCS PCM C Compiler, Version 5.112, 5967               30-Jan-23 22:47
+CCS PCM C Compiler, Version 5.112, 5967               31-Jan-23 22:28
 
                Filename:   D:\OneDrive - The University of Technology\documents_pnl\DUT\dai_hoc_nam_3\HocKy1\kiThuatViDieuKhien\finaltermMCU\PICC\main.lst
 
-               ROM used:   240 words (3%)
+               ROM used:   301 words (4%)
                            Largest free fragment is 2048
-               RAM used:   27 (7%) at main() level
-                           31 (8%) worst case
-               Stack used: 1 locations (0 in main + 1 for interrupts)
+               RAM used:   23 (6%) at main() level
+                           29 (8%) worst case
+               Stack used: 2 locations (0 in main + 2 for interrupts)
                Stack size: 8
 
 *
 0000:  MOVLW  00
 0001:  MOVWF  0A
-0002:  GOTO   0BD
+0002:  GOTO   0F8
 0003:  NOP
 0004:  MOVWF  7F
 0005:  SWAPF  03,W
@@ -36,27 +36,34 @@ CCS PCM C Compiler, Version 5.112, 5967               30-Jan-23 22:47
 0017:  BTFSS  0B.4
 0018:  GOTO   01B
 0019:  BTFSC  0B.1
-001A:  GOTO   02C
-001B:  MOVF   22,W
-001C:  MOVWF  04
-001D:  MOVF   23,W
-001E:  MOVWF  77
-001F:  MOVF   24,W
-0020:  MOVWF  78
-0021:  MOVF   25,W
-0022:  MOVWF  79
-0023:  MOVF   26,W
-0024:  MOVWF  7A
-0025:  MOVF   20,W
-0026:  MOVWF  0A
-0027:  SWAPF  21,W
-0028:  MOVWF  03
-0029:  SWAPF  7F,F
-002A:  SWAPF  7F,W
-002B:  RETFIE
-002C:  BCF    0A.3
-002D:  BCF    0A.4
-002E:  GOTO   02F
+001A:  GOTO   030
+001B:  BTFSS  0B.5
+001C:  GOTO   01F
+001D:  BTFSC  0B.2
+001E:  GOTO   033
+001F:  MOVF   22,W
+0020:  MOVWF  04
+0021:  MOVF   23,W
+0022:  MOVWF  77
+0023:  MOVF   24,W
+0024:  MOVWF  78
+0025:  MOVF   25,W
+0026:  MOVWF  79
+0027:  MOVF   26,W
+0028:  MOVWF  7A
+0029:  MOVF   20,W
+002A:  MOVWF  0A
+002B:  SWAPF  21,W
+002C:  MOVWF  03
+002D:  SWAPF  7F,F
+002E:  SWAPF  7F,W
+002F:  RETFIE
+0030:  BCF    0A.3
+0031:  BCF    0A.4
+0032:  GOTO   04A
+0033:  BCF    0A.3
+0034:  BCF    0A.4
+0035:  GOTO   058
 .................... #include <main.h>
 .................... #include <16F877A.h>
 .................... //////////// Standard Header file for the PIC16F877A device ////////////////
@@ -71,27 +78,27 @@ CCS PCM C Compiler, Version 5.112, 5967               30-Jan-23 22:47
 .................... ///////////////////////////////////////////////////////////////////////////
 .................... #device PIC16F877A
 *
-0068:  MOVF   38,W
-0069:  CLRF   78
-006A:  SUBWF  37,W
-006B:  BTFSC  03.0
-006C:  GOTO   070
-006D:  MOVF   37,W
-006E:  MOVWF  77
-006F:  GOTO   07C
-0070:  CLRF   77
-0071:  MOVLW  08
-0072:  MOVWF  39
-0073:  RLF    37,F
-0074:  RLF    77,F
-0075:  MOVF   38,W
-0076:  SUBWF  77,W
-0077:  BTFSC  03.0
-0078:  MOVWF  77
-0079:  RLF    78,F
-007A:  DECFSZ 39,F
-007B:  GOTO   073
-007C:  RETURN
+00CA:  MOVF   34,W
+00CB:  CLRF   78
+00CC:  SUBWF  33,W
+00CD:  BTFSC  03.0
+00CE:  GOTO   0D2
+00CF:  MOVF   33,W
+00D0:  MOVWF  77
+00D1:  GOTO   0DE
+00D2:  CLRF   77
+00D3:  MOVLW  08
+00D4:  MOVWF  35
+00D5:  RLF    33,F
+00D6:  RLF    77,F
+00D7:  MOVF   34,W
+00D8:  SUBWF  77,W
+00D9:  BTFSC  03.0
+00DA:  MOVWF  77
+00DB:  RLF    78,F
+00DC:  DECFSZ 35,F
+00DD:  GOTO   0D5
+00DE:  RETURN
 .................... 
 .................... #list
 .................... 
@@ -247,319 +254,403 @@ CCS PCM C Compiler, Version 5.112, 5967               30-Jan-23 22:47
 .................... 
 .................... #device ADC=10
 .................... #use delay(crystal=20000000)
+*
+0036:  MOVLW  37
+0037:  MOVWF  04
+0038:  BCF    03.7
+0039:  MOVF   00,W
+003A:  BTFSC  03.2
+003B:  GOTO   049
+003C:  MOVLW  06
+003D:  MOVWF  78
+003E:  CLRF   77
+003F:  DECFSZ 77,F
+0040:  GOTO   03F
+0041:  DECFSZ 78,F
+0042:  GOTO   03E
+0043:  MOVLW  7B
+0044:  MOVWF  77
+0045:  DECFSZ 77,F
+0046:  GOTO   045
+0047:  DECFSZ 00,F
+0048:  GOTO   03C
+0049:  RETURN
 .................... #fuses NOWDT, HS, NOLVP, NOPUT, NOPROTECT, NODEBUG, NOBROWNOUT, NOCPD, NOWRT
 .................... 
 .................... 
 .................... 
 .................... unsigned int8 seg7ledca[10] = {0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8, 0x80, 0x90};//7 segment led code common anode
 *
-00CA:  MOVLW  C0
-00CB:  BCF    03.5
-00CC:  MOVWF  27
-00CD:  MOVLW  F9
-00CE:  MOVWF  28
-00CF:  MOVLW  A4
-00D0:  MOVWF  29
-00D1:  MOVLW  B0
-00D2:  MOVWF  2A
-00D3:  MOVLW  99
-00D4:  MOVWF  2B
-00D5:  MOVLW  92
-00D6:  MOVWF  2C
-00D7:  MOVLW  82
-00D8:  MOVWF  2D
-00D9:  MOVLW  F8
-00DA:  MOVWF  2E
-00DB:  MOVLW  80
-00DC:  MOVWF  2F
-00DD:  MOVLW  90
-00DE:  MOVWF  30
+0104:  MOVLW  C0
+0105:  BCF    03.5
+0106:  MOVWF  27
+0107:  MOVLW  F9
+0108:  MOVWF  28
+0109:  MOVLW  A4
+010A:  MOVWF  29
+010B:  MOVLW  B0
+010C:  MOVWF  2A
+010D:  MOVLW  99
+010E:  MOVWF  2B
+010F:  MOVLW  92
+0110:  MOVWF  2C
+0111:  MOVLW  82
+0112:  MOVWF  2D
+0113:  MOVLW  F8
+0114:  MOVWF  2E
+0115:  MOVLW  80
+0116:  MOVWF  2F
+0117:  MOVLW  90
+0118:  MOVWF  30
 .................... 
 .................... unsigned int8 n = 0;
-.................... unsigned int8 on_lamp = 0;
-.................... unsigned int8 i;
-.................... unsigned int16 t;
+.................... 
 .................... //=========================declare function====================================
 .................... void init_pin(void)
 .................... {
 .................... // set up port
-....................    DDRB_1 = 0;
+....................    DDRA_0 = 1;//button on/off sensor
 *
-003D:  BSF    03.5
-003E:  BCF    06.1
-....................    DDRB_2 = 0;
-003F:  BCF    06.2
-....................    DDRB_3 = 0;
-0040:  BCF    06.3
-....................    DDRB_4 = 0;
-0041:  BCF    06.4
-....................    DDRC = 0x00;
-0042:  CLRF   07
-....................    DDRD = 0x00;
-0043:  CLRF   08
-0044:  BCF    03.5
-0045:  BCF    0A.3
-0046:  BCF    0A.4
-0047:  GOTO   0E0 (RETURN)
+008D:  BSF    03.5
+008E:  BSF    05.0
+....................    DDRA_1 = 1;//button on/off light
+008F:  BSF    05.1
+....................    DDRA_2 = 1;//button reset count
+0090:  BSF    05.2
+....................    DDRB_0 = 1;//input sensor
+0091:  BSF    06.0
+....................    DDRB_1 = 0;//signal led green
+0092:  BCF    06.1
+....................    DDRB_2 = 0;//signal led yellow
+0093:  BCF    06.2
+....................    DDRB_3 = 0;//signal led red
+0094:  BCF    06.3
+....................    DDRB_4 = 0;//light
+0095:  BCF    06.4
+....................    DDRB_5 = 0;//signal sensor led
+0096:  BCF    06.5
+....................    DDRC = 0x00;//7 segment led dozens
+0097:  CLRF   07
+....................    DDRD = 0x00;//7 segment led units
+0098:  CLRF   08
+0099:  BCF    03.5
+009A:  BCF    0A.3
+009B:  BCF    0A.4
+009C:  GOTO   11A (RETURN)
 .................... }
 .................... 
 .................... void init_int_ext(void);//init interrupt external
 .................... 
-.................... void status_on_off(unsigned int8 n);
+.................... void status_on_off(unsigned int8 n);//notification status
 .................... 
 .................... void display_on_seg7led(unsigned int8 n);//export 7 segment led
 .................... 
-.................... void delay_timer0(unsigned int16 t);// delay timer 0
-.................... 
-.................... void on_off_lamp(void);
-.................... 
+.................... void init_int_timer0(void);//init interrupt timer 0
 .................... 
 .................... //=====================declare interrupt program===============================
 .................... #INT_EXT
 .................... void _int_ext(void)
 .................... {
-....................    clear_interrupt(INT_EXT);
+....................    PORTB_4 = 1;
 *
-002F:  BCF    0B.1
-....................    disable_interrupts(GLOBAL);
-0030:  BCF    0B.6
-0031:  BCF    0B.7
-0032:  BTFSC  0B.7
-0033:  GOTO   031
-....................    //begin interrupt external program
+004A:  BSF    06.4
+....................    delay_ms(1000);
+004B:  MOVLW  04
+004C:  MOVWF  36
+004D:  MOVLW  FA
+004E:  MOVWF  37
+004F:  CALL   036
+0050:  DECFSZ 36,F
+0051:  GOTO   04D
+....................    PORTB_4 = 0;
+0052:  BCF    06.4
 ....................    n++;
-0034:  INCF   31,F
-....................    on_lamp = 1;
-0035:  MOVLW  01
-0036:  MOVWF  32
-....................    //end interrupt external program
-....................    enable_interrupts(GLOBAL);
-0037:  MOVLW  C0
-0038:  IORWF  0B,F
-0039:  BCF    0B.1
-003A:  BCF    0A.3
-003B:  BCF    0A.4
-003C:  GOTO   01B
+0053:  INCF   31,F
+.................... }
+.................... 
+0054:  BCF    0B.1
+0055:  BCF    0A.3
+0056:  BCF    0A.4
+0057:  GOTO   01F
+.................... #INT_TIMER0
+.................... void _int_timer0(void)
+.................... {
+....................    if(PORTA_0)
+0058:  BTFSS  05.0
+0059:  GOTO   069
+....................    {
+....................       //on/off sensor
+....................       delay_ms(20);
+005A:  MOVLW  14
+005B:  MOVWF  37
+005C:  CALL   036
+....................       if(PORTA_0)
+005D:  BTFSS  05.0
+005E:  GOTO   069
+....................       {
+....................          DDRB_0 = !DDRB_0;
+005F:  MOVLW  01
+0060:  BSF    03.5
+0061:  XORWF  06,F
+....................          while(PORTA_0);
+0062:  BCF    03.5
+0063:  BTFSC  05.0
+0064:  GOTO   063
+....................          if(PORTB_4)
+0065:  BTFSS  06.4
+0066:  GOTO   069
+....................          {
+....................             PORTB_4 = 0;
+0067:  BCF    06.4
+....................             n++;
+0068:  INCF   31,F
+....................          }
+....................       }     
+....................    }
+....................    if(DDRB_0 == 0)
+0069:  BSF    03.5
+006A:  BTFSC  06.0
+006B:  GOTO   07B
+....................    {
+....................       if(PORTA_1)
+006C:  BCF    03.5
+006D:  BTFSS  05.1
+006E:  GOTO   07A
+....................       {
+....................          //on/off light when sensor off
+....................          delay_ms(20);
+006F:  MOVLW  14
+0070:  MOVWF  37
+0071:  CALL   036
+....................          if(PORTA_1)
+0072:  BTFSS  05.1
+0073:  GOTO   07A
+....................          {
+....................             PORTB_4 = !PORTB_4;
+0074:  MOVLW  10
+0075:  XORWF  06,F
+....................             if(!PORTB_4)
+0076:  BTFSS  06.4
+....................             {
+....................                n++;
+0077:  INCF   31,F
+....................             }
+....................             while(PORTA_1);
+0078:  BTFSC  05.1
+0079:  GOTO   078
+007A:  BSF    03.5
+....................          }   
+....................       }
+....................    }
+....................    if(PORTA_2)
+007B:  BCF    03.5
+007C:  BTFSS  05.2
+007D:  GOTO   087
+....................    {
+....................       //reset counter on/off light
+....................       delay_ms(20);
+007E:  MOVLW  14
+007F:  MOVWF  37
+0080:  CALL   036
+....................       if(PORTA_2)
+0081:  BTFSS  05.2
+0082:  GOTO   087
+....................       {
+....................          n = 0;
+0083:  CLRF   31
+....................          PORTB_4 = 0;
+0084:  BCF    06.4
+....................          while(PORTA_2);
+0085:  BTFSC  05.2
+0086:  GOTO   085
+....................       }
+....................       
+....................    }
+....................    set_timer0(231);
+0087:  MOVLW  E7
+0088:  MOVWF  01
+0089:  BCF    0B.2
+008A:  BCF    0A.3
+008B:  BCF    0A.4
+008C:  GOTO   01F
 .................... }
 .................... 
 .................... //===========================main program======================================
 .................... void main()
 *
-00BD:  MOVF   03,W
-00BE:  ANDLW  1F
-00BF:  MOVWF  03
-00C0:  CLRF   31
-00C1:  CLRF   32
-00C2:  BSF    03.5
-00C3:  BSF    1F.0
-00C4:  BSF    1F.1
-00C5:  BSF    1F.2
-00C6:  BCF    1F.3
-00C7:  MOVLW  07
-00C8:  MOVWF  1C
-00C9:  BCF    03.7
+00F8:  MOVF   03,W
+00F9:  ANDLW  1F
+00FA:  MOVWF  03
+00FB:  CLRF   31
+00FC:  BSF    03.5
+00FD:  BSF    1F.0
+00FE:  BSF    1F.1
+00FF:  BSF    1F.2
+0100:  BCF    1F.3
+0101:  MOVLW  07
+0102:  MOVWF  1C
+0103:  BCF    03.7
 .................... {
 ....................    init_pin();
 *
-00DF:  GOTO   03D
+0119:  GOTO   08D
 ....................    init_int_ext();
-00E0:  GOTO   048
-....................    
-....................    setup_timer_0(T0_INTERNAL|T0_DIV_4);//set timer 0
-00E1:  BSF    03.5
-00E2:  MOVF   01,W
-00E3:  ANDLW  C0
-00E4:  IORLW  01
-00E5:  MOVWF  01
+011A:  GOTO   09D
+....................    init_int_timer0();
+011B:  GOTO   0A6
 ....................    
 ....................    while(TRUE)
 ....................    {
 ....................       status_on_off(n);
-00E6:  BCF    03.5
-00E7:  MOVF   31,W
-00E8:  MOVWF  36
-00E9:  GOTO   052
+011C:  MOVF   31,W
+011D:  MOVWF  32
+011E:  GOTO   0B4
 ....................       display_on_seg7led(n);
-00EA:  MOVF   31,W
-00EB:  MOVWF  36
-00EC:  CALL   07D
-....................       on_off_lamp();
-00ED:  GOTO   094
-00EE:  GOTO   0E7
+011F:  MOVF   31,W
+0120:  MOVWF  32
+0121:  GOTO   0DF
+....................       if(DDRB_0)
+0122:  BSF    03.5
+0123:  BTFSS  06.0
+0124:  GOTO   129
+....................       {
+....................          PORTB_5 = 1;//sensor on
+0125:  BCF    03.5
+0126:  BSF    06.5
+....................       }
+0127:  GOTO   12B
+0128:  BSF    03.5
+....................       else
+....................       {
+....................          PORTB_5 = 0;//sensor off
+0129:  BCF    03.5
+012A:  BCF    06.5
+....................       }
+012B:  GOTO   11C
 ....................    }
-.................... 
 .................... }
 .................... 
-00EF:  SLEEP
+012C:  SLEEP
 .................... //==================================function===================================
 .................... void init_int_ext(void)
 .................... {
-....................    DDRB_0 = 1;
-*
-0048:  BSF    03.5
-0049:  BSF    06.0
+....................    //interrupt at RB0
 ....................    ext_int_edge(L_TO_H);
-004A:  BSF    01.6
+*
+009D:  BSF    03.5
+009E:  BSF    01.6
 ....................    enable_interrupts(INT_EXT);
-004B:  BCF    03.5
-004C:  BSF    0B.4
+009F:  BCF    03.5
+00A0:  BSF    0B.4
 ....................    enable_interrupts(GLOBAL);
-004D:  MOVLW  C0
-004E:  IORWF  0B,F
-004F:  BCF    0A.3
-0050:  BCF    0A.4
-0051:  GOTO   0E1 (RETURN)
+00A1:  MOVLW  C0
+00A2:  IORWF  0B,F
+00A3:  BCF    0A.3
+00A4:  BCF    0A.4
+00A5:  GOTO   11B (RETURN)
+.................... }
+.................... 
+.................... void init_int_timer0(void)
+.................... {
+....................    //interrupt timer 0
+....................    setup_timer_0(T0_INTERNAL|T0_DIV_1);
+00A6:  BSF    03.5
+00A7:  MOVF   01,W
+00A8:  ANDLW  C7
+00A9:  IORLW  08
+00AA:  MOVWF  01
+....................    set_timer0(231);
+00AB:  MOVLW  E7
+00AC:  BCF    03.5
+00AD:  MOVWF  01
+....................    enable_interrupts(INT_TIMER0);
+00AE:  BSF    0B.5
+....................    enable_interrupts(GLOBAL);
+00AF:  MOVLW  C0
+00B0:  IORWF  0B,F
+00B1:  BCF    0A.3
+00B2:  BCF    0A.4
+00B3:  GOTO   11C (RETURN)
 .................... }
 .................... 
 .................... void status_on_off(unsigned int8 n)
 .................... {
 ....................    if(n < 10)
-0052:  MOVF   36,W
-0053:  SUBLW  09
-0054:  BTFSS  03.0
-0055:  GOTO   05A
+00B4:  MOVF   32,W
+00B5:  SUBLW  09
+00B6:  BTFSS  03.0
+00B7:  GOTO   0BC
 ....................    {
+....................       //green led
 ....................       PORTB_1 = 1;
-0056:  BSF    06.1
+00B8:  BSF    06.1
 ....................       PORTB_2 = 0;
-0057:  BCF    06.2
+00B9:  BCF    06.2
 ....................       PORTB_3 = 0;
-0058:  BCF    06.3
+00BA:  BCF    06.3
 ....................    }
-0059:  GOTO   065
+00BB:  GOTO   0C7
 ....................    else if(n < 20)
-005A:  MOVF   36,W
-005B:  SUBLW  13
-005C:  BTFSS  03.0
-005D:  GOTO   062
+00BC:  MOVF   32,W
+00BD:  SUBLW  13
+00BE:  BTFSS  03.0
+00BF:  GOTO   0C4
 ....................    {
+....................       //yellow led
 ....................       PORTB_1 = 0;
-005E:  BCF    06.1
+00C0:  BCF    06.1
 ....................       PORTB_2 = 1;
-005F:  BSF    06.2
+00C1:  BSF    06.2
 ....................       PORTB_3 = 0;
-0060:  BCF    06.3
+00C2:  BCF    06.3
 ....................    }
-0061:  GOTO   065
+00C3:  GOTO   0C7
 ....................    else
 ....................    {
+....................       //red led
 ....................       PORTB_1 = 0;
-0062:  BCF    06.1
+00C4:  BCF    06.1
 ....................       PORTB_2 = 0;
-0063:  BCF    06.2
+00C5:  BCF    06.2
 ....................       PORTB_3 = 1;
-0064:  BSF    06.3
+00C6:  BSF    06.3
 ....................    }
-0065:  BCF    0A.3
-0066:  BCF    0A.4
-0067:  GOTO   0EA (RETURN)
+00C7:  BCF    0A.3
+00C8:  BCF    0A.4
+00C9:  GOTO   11F (RETURN)
 .................... }
 .................... 
 .................... void display_on_seg7led(unsigned int8 n)
 .................... {
-....................    PORTC = seg7ledca[n/10];
+....................    PORTC = seg7ledca[n/10];//7 segment led dozens
 *
-007D:  MOVF   36,W
-007E:  MOVWF  37
-007F:  MOVLW  0A
-0080:  MOVWF  38
-0081:  CALL   068
-0082:  MOVLW  27
-0083:  ADDWF  78,W
-0084:  MOVWF  04
-0085:  BCF    03.7
-0086:  MOVF   00,W
-0087:  MOVWF  07
-....................    PORTD = seg7ledca[n%10];
-0088:  MOVF   36,W
-0089:  MOVWF  37
-008A:  MOVLW  0A
-008B:  MOVWF  38
-008C:  CALL   068
-008D:  MOVLW  27
-008E:  ADDWF  77,W
-008F:  MOVWF  04
-0090:  BCF    03.7
-0091:  MOVF   00,W
-0092:  MOVWF  08
-0093:  RETURN
+00DF:  MOVF   32,W
+00E0:  MOVWF  33
+00E1:  MOVLW  0A
+00E2:  MOVWF  34
+00E3:  CALL   0CA
+00E4:  MOVLW  27
+00E5:  ADDWF  78,W
+00E6:  MOVWF  04
+00E7:  BCF    03.7
+00E8:  MOVF   00,W
+00E9:  MOVWF  07
+....................    PORTD = seg7ledca[n%10];//7 segment led units
+00EA:  MOVF   32,W
+00EB:  MOVWF  33
+00EC:  MOVLW  0A
+00ED:  MOVWF  34
+00EE:  CALL   0CA
+00EF:  MOVLW  27
+00F0:  ADDWF  77,W
+00F1:  MOVWF  04
+00F2:  BCF    03.7
+00F3:  MOVF   00,W
+00F4:  MOVWF  08
+00F5:  BCF    0A.3
+00F6:  BCF    0A.4
+00F7:  GOTO   122 (RETURN)
 .................... }
-.................... 
-.................... void delay_timer0(unsigned int16 t)
-.................... {
-....................    do
-....................    {
-....................       for(i = 0; i < 5; i++)
-*
-00A0:  CLRF   33
-00A1:  MOVF   33,W
-00A2:  SUBLW  04
-00A3:  BTFSS  03.0
-00A4:  GOTO   0AD
-....................       {
-....................          set_timer0(5);//initial count value
-00A5:  MOVLW  05
-00A6:  MOVWF  01
-....................          // T = 4 * (1 / Fosc) * Prescaler
-....................          while(get_timer0() < 255);
-00A7:  MOVF   01,W
-00A8:  SUBLW  FF
-00A9:  BTFSS  03.2
-00AA:  GOTO   0A7
-00AB:  INCF   33,F
-00AC:  GOTO   0A1
-....................       }
-....................       t--;
-00AD:  MOVF   36,W
-00AE:  BTFSC  03.2
-00AF:  DECF   37,F
-00B0:  DECF   36,F
-....................    }
-....................    while(t != 0);
-00B1:  MOVF   36,F
-00B2:  BTFSS  03.2
-00B3:  GOTO   0A0
-00B4:  MOVF   37,F
-00B5:  BTFSS  03.2
-00B6:  GOTO   0A0
-.................... }
-.................... 
-.................... void on_off_lamp(void)
-.................... {
-....................    if(on_lamp)
-*
-0094:  MOVF   32,F
-0095:  BTFSC  03.2
-0096:  GOTO   0B9
-....................    {
-....................       on_lamp = 0;
-0097:  CLRF   32
-....................       PORTB_4 = 1;
-0098:  BSF    06.4
-....................       display_on_seg7led(n);
-0099:  MOVF   31,W
-009A:  MOVWF  36
-009B:  CALL   07D
-....................       delay_timer0(1000);
-009C:  MOVLW  03
-009D:  MOVWF  37
-009E:  MOVLW  E8
-009F:  MOVWF  36
-....................       PORTB_4 = 0;
-*
-00B7:  BCF    06.4
-....................    }
-00B8:  GOTO   0BA
-....................    else
-....................    {
-....................       PORTB_4 = 0;
-00B9:  BCF    06.4
-....................    }
-00BA:  BCF    0A.3
-00BB:  BCF    0A.4
-00BC:  GOTO   0EE (RETURN)
-.................... }
-.................... 
 
 Configuration Fuses:
    Word  1: 3F3A   HS NOWDT NOPUT NOBROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

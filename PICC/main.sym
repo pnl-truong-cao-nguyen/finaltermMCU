@@ -1,22 +1,22 @@
 004-005 @READ_PROGRAM_MEMORY8.P1
 004-005 @WRITE_PROGRAM_MEMORY8.P2
-005     PINA
-005.0   PINA_0
 005.0   PORTA_0
+005     PINA
 005     PORTA
-005.1   PINA_1
+005.0   PINA_0
 005.1   PORTA_1
+005.1   PINA_1
 005.2   PINA_2
 005.2   PORTA_2
 005.3   PORTA_3
 005.3   PINA_3
-005.4   PORTA_4
 005.4   PINA_4
-005.5   PORTA_5
+005.4   PORTA_4
 005.5   PINA_5
-006     PINB
+005.5   PORTA_5
 006.0   PORTB_0
 006     PORTB
+006     PINB
 006.0   PINB_0
 006.1   PINB_1
 006.1   PORTB_1
@@ -24,18 +24,18 @@
 006.2   PORTB_2
 006.3   PORTB_3
 006.3   PINB_3
-006.4   PINB_4
 006.4   PORTB_4
-006.5   PORTB_5
+006.4   PINB_4
 006.5   PINB_5
+006.5   PORTB_5
 006.6   PORTB_6
 006.6   PINB_6
 006.7   PINB_7
 006.7   PORTB_7
-007     PINC
 007.0   PINC_0
-007     PORTC
+007     PINC
 007.0   PORTC_0
+007     PORTC
 007.1   PORTC_1
 007.1   PINC_1
 007.2   PORTC_2
@@ -44,44 +44,44 @@
 007.3   PINC_3
 007.4   PINC_4
 007.4   PORTC_4
-007.5   PORTC_5
 007.5   PINC_5
+007.5   PORTC_5
 007.6   PINC_6
 007.6   PORTC_6
-007.7   PINC_7
 007.7   PORTC_7
-008     PSP_DATA
-008     PORTD
-008.0   PORTD_0
-008.0   PIND_0
+007.7   PINC_7
 008     PIND
-008.1   PIND_1
+008.0   PIND_0
+008     PORTD
+008     PSP_DATA
+008.0   PORTD_0
 008.1   PORTD_1
-008.2   PORTD_2
+008.1   PIND_1
 008.2   PIND_2
+008.2   PORTD_2
 008.3   PORTD_3
 008.3   PIND_3
-008.4   PORTD_4
 008.4   PIND_4
+008.4   PORTD_4
 008.5   PIND_5
 008.5   PORTD_5
 008.6   PIND_6
 008.6   PORTD_6
-008.7   PORTD_7
 008.7   PIND_7
+008.7   PORTD_7
 009     PINE
-009     PORTE
-009.0   PORTE_0
 009.0   PINE_0
+009.0   PORTE_0
+009     PORTE
 009.1   PINE_1
 009.1   PORTE_1
-009.2   PORTE_2
 009.2   PINE_2
-015     CCP_1
+009.2   PORTE_2
 015     CCP_1_LOW
+015     CCP_1
 016     CCP_1_HIGH
-01B     CCP_2
 01B     CCP_2_LOW
+01B     CCP_2
 01C     CCP_2_HIGH
 020     @INTERRUPT_AREA
 021     @INTERRUPT_AREA
@@ -92,25 +92,23 @@
 026     @INTERRUPT_AREA
 027-030 seg7ledca
 031     n
-032     on_lamp
-033     i
-034-035 t
-036     display_on_seg7led.n
-036     status_on_off.n
-036-037 delay_timer0.t
-037     @DIV88.P1
-037     display_on_seg7led.@SCRATCH1
-038     @DIV88.P1
-038     delay_timer0.@SCRATCH1
-039     @DIV88.@SCRATCH1
+032     status_on_off.n
+032     display_on_seg7led.n
+033     @DIV88.P1
+033     display_on_seg7led.@SCRATCH1
+034     @DIV88.P1
+035     @DIV88.@SCRATCH1
+036     _int_ext.@SCRATCH1
+036     _int_timer0.@SCRATCH1
+037     @delay_ms1.P1
 077     @SCRATCH
 078     @SCRATCH
 078     _RETURN_
 079     @SCRATCH
 07A     @SCRATCH
 07F     @INTERRUPT_AREA
-085     DDRA
 085.0   DDRA_0
+085     DDRA
 085.1   DDRA_1
 085.2   DDRA_2
 085.3   DDRA_3
@@ -124,8 +122,8 @@
 086.5   DDRB_5
 086.6   DDRB_6
 086.7   DDRB_7
-087     DDRC
 087.0   DDRC_0
+087     DDRC
 087.1   DDRC_1
 087.2   DDRC_2
 087.3   DDRC_3
@@ -133,8 +131,8 @@
 087.5   DDRC_5
 087.6   DDRC_6
 087.7   DDRC_7
-088     DDRD
 088.0   DDRD_0
+088     DDRD
 088.1   DDRD_1
 088.2   DDRD_2
 088.3   DDRD_3
@@ -149,8 +147,8 @@
 09C.6   C1OUT
 09C.7   C2OUT
 0FF     @INTERRUPT_AREA
-10D-10E @READ_PROGRAM_MEMORY8.P1
-10D-10E @WRITE_PROGRAM_MEMORY8.P2
+10D-10E @WRITE_PROGRAM_MEMORY8.P1
+10D-10E @READ_PROGRAM_MEMORY8.P2
 17F     @INTERRUPT_AREA
 1FF     @INTERRUPT_AREA
 27F     @INTERRUPT_AREA
@@ -215,30 +213,31 @@ FFF     @INTERRUPT_AREA
 1FFF     @INTERRUPT_AREA
 
 ROM Allocation:
-00002F  _int_ext
-00003D  init_pin
-000048  init_int_ext
-000052  status_on_off
-000068  @DIV88
-00007D  display_on_seg7led
-000094  on_off_lamp
-0000A0  delay_timer0
-0000BD  MAIN
-0000BD  @cinit1
-0000C9  @cinit2
+000036  @delay_ms1
+00004A  _int_ext
+000058  _int_timer0
+00008D  init_pin
+00009D  init_int_ext
+0000A6  init_int_timer0
+0000B4  status_on_off
+0000CA  @DIV88
+0000DF  display_on_seg7led
+0000F8  MAIN
+0000F8  @cinit1
+000103  @cinit2
 
 Project Directory:
     D:\OneDrive - The University of Technology\documents_pnl\DUT\dai_hoc_nam_3\HocKy1\kiThuatViDieuKhien\finaltermMCU\PICC\
 
 Project Files:
-    main.c                                                  [30-Jan-23 22:47  CRC=C5C1FEDA]
+    main.c                                                  [31-Jan-23 22:28  CRC=C0DACEAA]
     main.h                                                  [29-Jan-23 15:13  CRC=D872A938]
     ..\..\..\..\..\..\..\..\Program Files\PICC\Devices\16F877A.h [21-Oct-22 11:02  CRC=6A06E202]
     DEF_16F877A.h                                           [03-Jan-23 19:17  CRC=7B681607]
 
-Source signature=FF0BB622
+Source signature=FA2485F2
 Program memory checksum=0000
-Hex file CRC=46A8
+Hex file CRC=D2E9
 
 Units:
     D:\OneDrive - The University of Technology\documents_pnl\DUT\dai_hoc_nam_3\HocKy1\kiThuatViDieuKhien\finaltermMCU\PICC\main (main)

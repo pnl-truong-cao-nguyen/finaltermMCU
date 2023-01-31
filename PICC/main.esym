@@ -1,9 +1,9 @@
-D G "__PCM__" 0 131 ""5.112""
-D G "__DEVICE__" 0 131 "877"
-D G "__DATE__" 0 131 ""30-Jan-23""
-D G "__TIME__" 0 131 ""22:47:04""
-D G "_UNICODE" 0 131 ""?""
-D G "__EVAL" 0 131 ""?"" "Standard Header file for the PIC16F877A device ////////////////"
+D G "__PCM__" 0 163 ""5.112""
+D G "__DEVICE__" 0 163 "877"
+D G "__DATE__" 0 163 ""31-Jan-23""
+D G "__TIME__" 0 163 ""22:28:23""
+D G "_UNICODE" 0 163 ""?""
+D G "__EVAL" 0 163 ""?"" "Standard Header file for the PIC16F877A device ////////////////"
 c L "set_tris_a" 2 3 6 "FUNCTION"
 F N "set_tris_a" 2 37 ""
 V L "value" 2 37 "int8" `55 
@@ -1186,47 +1186,58 @@ C L "jump_to_isr" 3 146 2 "*"
 V G "seg7ledca" 0 3 "int8[10]" `813 
 C L "jump_to_isr" 0 3 1 "FUNCTION"
 V G "n" 0 5 "int8" `814 
-V G "on_lamp" 0 6 "int8" `815 
-V G "i" 0 7 "int8" `816 
-V G "t" 0 8 "int16" `817  "=========================declare function===================================="
-F N "init_pin" 0 10 ""
-F G "init_pin" 0 11 "void()" `818  "set up port"
-F N "init_int_ext" 0 21 ""
-f G "init_int_ext" 0 21 "void()" `819  "init interrupt external"
-F N "status_on_off" 0 23 ""
-V L "n" 0 23 "int8" `821 
-f G "status_on_off" 0 23 "void(int8 n)" `820 
-F N "display_on_seg7led" 0 25 ""
-V L "n" 0 25 "int8" `823 
-f G "display_on_seg7led" 0 25 "void(int8 n)" `822  "export 7 segment led"
-F N "delay_timer0" 0 27 ""
-V L "t" 0 27 "int16" `825 
-f G "delay_timer0" 0 27 "void(int16 t)" `824  "delay timer 0"
-F N "on_off_lamp" 0 29 ""
-f G "on_off_lamp" 0 29 "void()" `826  "=====================declare interrupt program==============================="
+C L "jump_to_isr" 0 3 1 "FUNCTION"
+F N "init_pin" 0 8 ""
+F G "init_pin" 0 9 "void()" `815  "set up port"
+C L "init_pin" 0 3 1 "FUNCTION"
+C L "init_pin" 0 3 1 "FUNCTION"
+C L "init_pin" 0 3 1 "FUNCTION"
+C L "init_pin" 0 3 1 "FUNCTION"
+C L "init_pin" 0 3 1 "FUNCTION"
+C L "init_pin" 0 3 1 "FUNCTION"
+C L "init_pin" 0 3 1 "FUNCTION"
+C L "init_pin" 0 3 1 "FUNCTION"
+C L "init_pin" 0 3 1 "FUNCTION"
+C L "init_pin" 0 3 1 "FUNCTION"
+C L "init_pin" 0 3 1 "FUNCTION"
+F N "init_int_ext" 0 24 ""
+f G "init_int_ext" 0 24 "void()" `816  "init interrupt external"
+F N "status_on_off" 0 26 ""
+V L "n" 0 26 "int8" `818 
+f G "status_on_off" 0 26 "void(int8 n)" `817  "notification status"
+F N "display_on_seg7led" 0 28 ""
+V L "n" 0 28 "int8" `820 
+f G "display_on_seg7led" 0 28 "void(int8 n)" `819  "export 7 segment led"
+F N "init_int_timer0" 0 30 ""
+f G "init_int_timer0" 0 30 "void()" `821  "init interrupt timer 0"
+C L "init_int_timer0" 0 3 1 "FUNCTION"
 F N "_int_ext" 0 34 ""
-F G "_int_ext" 0 35 "void()" `827 
-C L "_int_ext" 0 3 1 "FUNCTION"
-C L "_int_ext" 0 3 1 "FUNCTION"
+F G "_int_ext" 0 35 "void()" `822 
+F N "_int_timer0" 0 43 ""
+F G "_int_timer0" 0 44 "void()" `823 
+C L "_int_timer0" 0 3 1 "FUNCTION"
+C L "_int_timer0" 0 3 1 "FUNCTION"
+C L "_int_timer0" 0 3 1 "FUNCTION"
 C L "MAIN" 0 3 1 "FUNCTION"
-F N "MAIN" 0 46 ""
-F G "MAIN" 0 47 "void()" `828 
+F N "MAIN" 0 93 ""
+F G "MAIN" 0 94 "void()" `824 
+C L "MAIN" 0 3 1 "FUNCTION"
 C L "MAIN" 0 3 1 "FUNCTION"
 C L "init_int_ext" 0 3 1 "FUNCTION"
-F N "init_int_ext" 0 63 ""
-F G "init_int_ext" 0 64 "void()" `819 
-F N "status_on_off" 0 71 ""
-V L "n" 0 71 "int8" `832 
-F G "status_on_off" 0 72 "void(int8 n)" `820 
-F N "display_on_seg7led" 0 93 ""
-V L "n" 0 93 "int8" `832 
-F G "display_on_seg7led" 0 94 "void(int8 n)" `822 
-F N "delay_timer0" 0 99 ""
-V L "t" 0 99 "int16" `835 
-F G "delay_timer0" 0 100 "void(int16 t)" `824 
-C L "delay_timer0" 0 3 2 "FUNCTION"
-F N "on_off_lamp" 0 114 ""
-F G "on_off_lamp" 0 115 "void()" `826 
+F N "init_int_ext" 0 115 ""
+F G "init_int_ext" 0 116 "void()" `816  "interrupt at RB0"
+F N "init_int_timer0" 0 123 ""
+F G "init_int_timer0" 0 124 "void()" `821  "interrupt timer 0"
+F N "status_on_off" 0 132 ""
+V L "n" 0 132 "int8" `828 
+F G "status_on_off" 0 133 "void(int8 n)" `817 
+C L "status_on_off" 0 3 1 "FUNCTION"
+C L "status_on_off" 0 3 1 "FUNCTION"
+C L "status_on_off" 0 3 1 "FUNCTION"
+F N "display_on_seg7led" 0 157 ""
+V L "n" 0 157 "int8" `828 
+F G "display_on_seg7led" 0 158 "void(int8 n)" `819 
+C L "display_on_seg7led" 0 3 1 "FUNCTION"
 F B "reset_cpu" 0 0
 F B "abs" 1 0
 F B "sleep" 0 0
